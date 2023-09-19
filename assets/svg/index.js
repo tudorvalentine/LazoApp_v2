@@ -7,3 +7,4 @@ export { default as MenuSvg } from "./Menu";
 export { default as HomeSvg } from "./Home";
 export { default as HeartSvg } from "./Heart";
 export { default as CardSvg } from "./Card";
+export { default as BackSvg } from "./Back";

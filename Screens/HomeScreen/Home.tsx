@@ -1,6 +1,10 @@
 import { View, Text } from "react-native";
-
-const Home = () => {
+import React from "react";
+const Home = (props) => {
+  const { navigation } = props;
+  React.useLayoutEffect(() => {
+    navigation.setOptions({});
+  }, []);
   return (
     <View>
       <Text>Home</Text>

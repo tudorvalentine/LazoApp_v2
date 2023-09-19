@@ -22,6 +22,7 @@ import Cards from "./Screens/CardsScreen/Cards";
 import OrderButton from "./components/Header/OrderButton";
 import MenuButton from "./components/Header/MenuButton";
 import { BagSvg, HeartSvg, HomeSvg, CardSvg } from "./assets/svg";
+import BackButton from "./components/Header/BackButton";
 
 export default function App() {
   const Stack = createNativeStackNavigator();
@@ -60,13 +61,8 @@ export default function App() {
             name="Home"
             component={Home}
             options={{
-              tabBarIcon: () => <HomeSvg />,
-              labelStyle: {
-                fontSize: 12,
-              },
-              headerStyle: {},
-              tabBarLabel: "Prod",
-              title: "",
+              tabBarIcon: ({ color }) => <HomeSvg stroke={color} />,
+              tabBarLabel: "",
               headerTitleAlign: "center",
               headerRight: () => <OrderButton />,
               headerLeft: () => <MenuButton />,
@@ -77,13 +73,16 @@ export default function App() {
             component={Wishlist}
             options={{
               title: "Wishlist",
+              tabBarLabel: "",
               headerTitleAlign: "center",
               headerTitleStyle: {
                 fontSize: 17,
                 fontFamily: "ir-bold",
                 color: "#1D1E20",
               },
-              tabBarIcon: () => <HeartSvg />,
+              tabBarIcon: ({ color }) => <HeartSvg stroke={color} />,
+              headerRight: () => <OrderButton />,
+              headerLeft: () => <BackButton />,
             }}
           />
           <Tab.Screen
@@ -91,7 +90,7 @@ export default function App() {
             component={Orders}
             options={{
               tabBarLabel: "",
-              tabBarIcon: () => <BagSvg stroke="#8F959E" />,
+              tabBarIcon: ({ color }) => <BagSvg stroke={color} />,
             }}
           />
           <Tab.Screen
@@ -99,7 +98,7 @@ export default function App() {
             component={Cards}
             options={{
               tabBarLabel: "",
-              tabBarIcon: () => <CardSvg />,
+              tabBarIcon: ({ color }) => <CardSvg stroke={color} />,
             }}
           />
         </Tab.Navigator>

@@ -5,7 +5,7 @@ const Bag = (props) => {
   return (
     <Svg xmlns="http://www.w3.org/2000/svg" width={25} height={25} fill="none">
       <Path
-        stroke={stroke}
+        stroke={stroke == "" || stroke == undefined ? "#8F959E" : stroke}
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth={1.5}
@@ -13,7 +13,7 @@ const Bag = (props) => {
         clipRule="evenodd"
       />
       <Path
-        stroke={stroke}
+        stroke={stroke == "" || stroke == undefined ? "#8F959E" : stroke}
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth={1.5}
