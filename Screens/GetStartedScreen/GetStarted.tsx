@@ -1,14 +1,15 @@
 import { Appbar, Button } from "react-native-paper";
 import { Text } from "react-native-paper";
-import SocialButton from "./SocialButton";
-import GoogleSvg from "../assets/img/google.svg";
-import FacebookSvg from "../assets/img/facebook.svg";
-import TwitterSvg from "../assets/img/twitter.svg";
-import { View } from "react-native";
-import { g_style } from "../styles/styles";
-import BottomButton from "./BottomButton";
+import SocialButton from "../../components/SocialButton";
 
-export default function GetStarted({ navigation }) {
+import {GoogleSvg, FacebookSvg, TwitterSvg} from '../../assets/svg';
+
+import { View } from "react-native";
+import { g_style } from "../../styles/styles";
+import BottomButton from "../../components/BottomButton";
+
+const GetStarted = (props) => {
+  const { navigation } = props;
   return (
     <>
       <Appbar.Header mode="large" style={{ backgroundColor: "white" }}>
@@ -79,4 +80,6 @@ export default function GetStarted({ navigation }) {
       </View>
     </>
   );
-}
+};
+
+export default GetStarted;

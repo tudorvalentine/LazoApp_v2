@@ -1,9 +1,9 @@
 import { Appbar, Button, TextInput, Switch } from "react-native-paper";
 import { View, Text } from "react-native";
 import { useState } from "react";
-import { g_style } from "../styles/styles";
+import { g_style } from "../../styles/styles";
 import axios from "axios";
-import BottomButton from "./BottomButton";
+import BottomButton from "../../components/BottomButton";
 
 export default function LoginScreen({ navigation }) {
   const [isSwitchOn, setIsSwitchOn] = useState(false);

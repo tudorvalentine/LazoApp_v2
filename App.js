@@ -1,16 +1,31 @@
 import { useFonts } from "expo-font";
 import React, { useCallback } from "react";
 import { PaperProvider } from "react-native-paper";
-import { NavigationContainer } from "@react-navigation/native";
+import { NavigationContainer, useNavigation } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
-import WelcomeScreen from "./components/WelcomeScreen";
-import GetStarted from "./components/GetStarted";
-import LoginScreen from "./components/LoginScreen";
-import MainPage from "./components/MainPage";
-import SignUpScreen from "./components/SignUpScreen";
+// import WelcomeScreen from "./components/WelcomeScreen";
+// import GetStarted from "./components/GetStarted";
+// import LoginScreen from "./components/LoginScreen";
+// import MainPage from "./components/MainPage";
+// import SignUpScreen from "./components/SignUpScreen";
+// import ForgotPwdScreen from "./components/ForgotPwdScreen";
+// import VerifyCodeScreen from "./components/VerifyCodeScreen/VerifyCodeScreen";
+import NewPwdScreen from "./Screens/NewPassScreen/NewPwdScreen";
+
+import Home from "./Screens/HomeScreen/Home";
+import Wishlist from "./Screens/WishlistScreen/WishlistScreen";
+import Orders from "./Screens/OrdersScreen/Orders";
+import Cards from "./Screens/CardsScreen/Cards";
+
+import OrderButton from "./components/Header/OrderButton";
+import MenuButton from "./components/Header/MenuButton";
+import { BagSvg, HeartSvg, HomeSvg, CardSvg } from "./assets/svg";
+
 export default function App() {
   const Stack = createNativeStackNavigator();
+  const Tab = createBottomTabNavigator();
   const [fontsLoaded, fontError] = useFonts({
     "ir-black": require("./assets/fonts/Inter-Black.ttf"),
     "ir-bold": require("./assets/fonts/Inter-Bold.ttf"),
@@ -33,14 +48,76 @@ export default function App() {
   return (
     <NavigationContainer>
       <PaperProvider>
-        <Stack.Navigator screenOptions={{ headerShown: false }}>
+        {/* <Stack.Navigator screenOptions={{ headerShown: false }}>
           <Stack.Screen name="Welcome" component={WelcomeScreen} />
           <Stack.Screen name="GetStarted" component={GetStarted} />
           <Stack.Screen name="LoginScreen" component={LoginScreen} />
           <Stack.Screen name="SignUpScreen" component={SignUpScreen} />
           <Stack.Screen name="MainPage" component={MainPage} />
-        </Stack.Navigator>
+        </Stack.Navigator> */}
+        <Tab.Navigator>
+          <Tab.Screen
+            name="Home"
+            component={Home}
+            options={{
+              tabBarIcon: () => <HomeSvg />,
+              labelStyle: {
+                fontSize: 12,
+              },
+              headerStyle: {},
+              tabBarLabel: "Prod",
+              title: "",
+              headerTitleAlign: "center",
+              headerRight: () => <OrderButton />,
+              headerLeft: () => <MenuButton />,
+            }}
+          />
+          <Tab.Screen
+            name="Wishlist"
+            component={Wishlist}
+            options={{
+              title: "Wishlist",
+              headerTitleAlign: "center",
+              headerTitleStyle: {
+                fontSize: 17,
+                fontFamily: "ir-bold",
+                color: "#1D1E20",
+              },
+              tabBarIcon: () => <HeartSvg />,
+            }}
+          />
+          <Tab.Screen
+            name="Orders"
+            component={Orders}
+            options={{
+              tabBarLabel: "",
+              tabBarIcon: () => <BagSvg stroke="#8F959E" />,
+            }}
+          />
+          <Tab.Screen
+            name="Cards"
+            component={Cards}
+            options={{
+              tabBarLabel: "",
+              tabBarIcon: () => <CardSvg />,
+            }}
+          />
+        </Tab.Navigator>
+        {/* <View
+          style={{
+            flex: 1,
+            flexDirection: "row",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <OrderButton />
+          <MenuButton />
+        </View> */}
       </PaperProvider>
     </NavigationContainer>
+    // <PaperProvider>
+    //   <NewPwdScreen />
+    // </PaperProvider>
   );
 }

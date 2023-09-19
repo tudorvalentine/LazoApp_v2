@@ -1,0 +1,9 @@
+export { default as BagSvg } from "./Bag";
+export { default as FacebookSvg } from "./facebook";
+export { default as ForgotPwdSvg } from "./forgotpwd";
+export { default as GoogleSvg } from "./google";
+export { default as TwitterSvg } from "./twitter";
+export { default as MenuSvg } from "./Menu";
+export { default as HomeSvg } from "./Home";
+export { default as HeartSvg } from "./Heart";
+export { default as CardSvg } from "./Card";

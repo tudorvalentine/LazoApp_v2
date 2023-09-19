@@ -7,10 +7,10 @@ import {
 import { View, Text } from "react-native";
 import { useState } from "react";
 
-import { g_style } from "../styles/styles";
-import BottomButton from "./BottomButton";
+import { g_style } from "../../styles/styles";
+import BottomButton from "../../components/BottomButton";
 import axios from "axios";
-import { getJwtToken, saveJwtToken } from "../utils/AuthUtils";
+import { getJwtToken, saveJwtToken } from "../../utils/AuthUtils";
 
 export default function SignUpScreen({ navigation }) {
   const [isSwitchOn, setIsSwitchOn] = useState(false);

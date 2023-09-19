@@ -10,6 +10,7 @@ export const g_style = StyleSheet.create({
     fontFamily: "ir-regular",
     color: "#8F959E",
     fontSize: 15,
+    textAlign: "center",
   },
   errMsg: {
     fontFamily: "ir-black",
