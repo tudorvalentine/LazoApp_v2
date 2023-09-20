@@ -8,3 +8,8 @@ export { default as HomeSvg } from "./Home";
 export { default as HeartSvg } from "./Heart";
 export { default as CardSvg } from "./Card";
 export { default as BackSvg } from "./Back";
+export { default as SearchSvg } from "./Search";
+export { default as AdidasSvg } from "./Adidas";
+export { default as PumaSvg } from "./Puma";
+export { default as FilaSvg } from "./Fila";
+export { default as NikeSvg } from "./Nike";

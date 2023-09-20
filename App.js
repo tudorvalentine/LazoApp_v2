@@ -21,7 +21,7 @@ import Cards from "./Screens/CardsScreen/Cards";
 
 import OrderButton from "./components/Header/OrderButton";
 import MenuButton from "./components/Header/MenuButton";
-import { BagSvg, HeartSvg, HomeSvg, CardSvg } from "./assets/svg";
+import { BagSvg, HeartSvg, HomeSvg, CardSvg, SearchSvg } from "./assets/svg";
 import BackButton from "./components/Header/BackButton";
 
 export default function App() {
@@ -62,10 +62,17 @@ export default function App() {
             component={Home}
             options={{
               tabBarIcon: ({ color }) => <HomeSvg stroke={color} />,
-              tabBarLabel: "",
+              tabBarShowLabel: false,
+              headerTitle: "",
               headerTitleAlign: "center",
               headerRight: () => <OrderButton />,
-              headerLeft: () => <MenuButton />,
+              headerLeft: () => (
+                <MenuButton
+                  onPress={() => {
+                    console.log(typeof (<SearchSvg />));
+                  }}
+                />
+              ),
             }}
           />
           <Tab.Screen
@@ -73,7 +80,7 @@ export default function App() {
             component={Wishlist}
             options={{
               title: "Wishlist",
-              tabBarLabel: "",
+              tabBarShowLabel: false,
               headerTitleAlign: "center",
               headerTitleStyle: {
                 fontSize: 17,
@@ -90,6 +97,7 @@ export default function App() {
             component={Orders}
             options={{
               tabBarLabel: "",
+              tabBarShowLabel: false,
               tabBarIcon: ({ color }) => <BagSvg stroke={color} />,
             }}
           />
@@ -98,6 +106,7 @@ export default function App() {
             component={Cards}
             options={{
               tabBarLabel: "",
+              tabBarShowLabel: false,
               tabBarIcon: ({ color }) => <CardSvg stroke={color} />,
             }}
           />

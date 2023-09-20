@@ -1,5 +1,5 @@
 import { Pressable, StyleSheet, Animated, Easing } from "react-native";
-import { MenuSvg } from "../../assets/svg";
+import { MenuSvg, SearchSvg } from "../../assets/svg";
 import { useState } from "react";
 const OrderButton = (props) => {
   const { onPress } = props;
@@ -15,7 +15,7 @@ const OrderButton = (props) => {
       easing: Easing.linear,
       useNativeDriver: false,
     }).start(() => {
-      onPress();
+      onPress(onPress());
     });
 
     setIsRotated(!isRotated); // Toggle the rotation state
