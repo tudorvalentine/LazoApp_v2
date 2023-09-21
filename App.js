@@ -23,6 +23,8 @@ import OrderButton from "./components/Header/OrderButton";
 import MenuButton from "./components/Header/MenuButton";
 import { BagSvg, HeartSvg, HomeSvg, CardSvg, SearchSvg } from "./assets/svg";
 import BackButton from "./components/Header/BackButton";
+import ProductDetailsScreen from "./Screens/ProductDetailsScreen/ProductDetailsScreen";
+import ReviewsScreen from "./Screens/ReviewsScreen/ReviewsScreen";
 
 export default function App() {
   const Stack = createNativeStackNavigator();
@@ -56,7 +58,7 @@ export default function App() {
           <Stack.Screen name="SignUpScreen" component={SignUpScreen} />
           <Stack.Screen name="MainPage" component={MainPage} />
         </Stack.Navigator> */}
-        <Tab.Navigator>
+        {/* <Tab.Navigator>
           <Tab.Screen
             name="Home"
             component={Home}
@@ -110,18 +112,8 @@ export default function App() {
               tabBarIcon: ({ color }) => <CardSvg stroke={color} />,
             }}
           />
-        </Tab.Navigator>
-        {/* <View
-          style={{
-            flex: 1,
-            flexDirection: "row",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <OrderButton />
-          <MenuButton />
-        </View> */}
+        </Tab.Navigator> */}
+        <ReviewsScreen />
       </PaperProvider>
     </NavigationContainer>
     // <PaperProvider>

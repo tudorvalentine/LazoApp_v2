@@ -1,12 +1,12 @@
 import { Text, StyleSheet } from "react-native";
 
 const Subtitle = (props) => {
-  const { subtitleText } = props;
+  const { subtitleText, style } = props;
 
-  return <Text style={style.page_subtitle}>{subtitleText}</Text>;
+  return <Text style={[styles.page_subtitle, style]}>{subtitleText}</Text>;
 };
 
-const style = StyleSheet.create({
+const styles = StyleSheet.create({
   page_subtitle: {
     fontFamily: "ir-regular",
     color: "#8F959E",

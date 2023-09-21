@@ -13,6 +13,9 @@ import {
 import CustomInput from "../../components/CustomInput";
 import BrandItem from "../../components/BrandItem";
 import Adidas from "../../assets/svg/Adidas";
+import SectionTitle from "../../components/SectionHead/SectionTitle";
+import SectionHead from "../../components/SectionHead/SectionHead";
+import ProductCard from "../../components/ProductCard";
 const Home = (props) => {
   const { navigation } = props;
   React.useLayoutEffect(() => {
@@ -37,6 +40,13 @@ const Home = (props) => {
       <View>
         <CustomInput placeholder="Search..." icon={<SearchSvg />} />
       </View>
+      <SectionHead
+        title="Choose Brand"
+        titleOfAction="View All"
+        onPressAction={() => {
+          console.log("View all was pressed.");
+        }}
+      />
       <View>
         <FlatList
           data={data}
@@ -45,6 +55,16 @@ const Home = (props) => {
           horizontal={true}
           showsHorizontalScrollIndicator={false} // Optional: Hide the horizontal scrollbar
         />
+      </View>
+      <SectionHead
+        title="New Arraival"
+        titleOfAction="View All"
+        onPressAction={() => {
+          console.log("View all was pressed.");
+        }}
+      />
+      <View>
+        <ProductCard />
       </View>
     </View>
   );
