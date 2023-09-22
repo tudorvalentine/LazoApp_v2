@@ -12,15 +12,20 @@ import {
 } from "../../assets/svg";
 import CustomInput from "../../components/CustomInput";
 import BrandItem from "../../components/BrandItem";
-import Adidas from "../../assets/svg/Adidas";
-import SectionTitle from "../../components/SectionHead/SectionTitle";
 import SectionHead from "../../components/SectionHead/SectionHead";
 import ProductCard from "../../components/ProductCard";
+import useScreenHeader from "../../hooks/useScreenHeader";
+import { useNavigation } from "@react-navigation/native";
 const Home = (props) => {
-  const { navigation } = props;
-  React.useLayoutEffect(() => {
-    navigation.setOptions({});
-  }, []);
+  const navigation = useNavigation();
+  useScreenHeader({
+    hasLeftMenu: true,
+    hasRight: true,
+    headerStyle: {
+      height: 130,
+    },
+  });
+
   const data = [
     { id: "1", text: "Adidas", icon: <AdidasSvg /> },
     { id: "2", text: "Nike", icon: <NikeSvg /> },
@@ -64,7 +69,11 @@ const Home = (props) => {
         }}
       />
       <View>
-        <ProductCard />
+        <ProductCard
+          onPress={() => {
+            navigation.navigate("Rev");
+          }}
+        />
       </View>
     </View>
   );
@@ -72,7 +81,9 @@ const Home = (props) => {
 
 const style = StyleSheet.create({
   container: {
-    padding: 20,
+    paddingLeft: 20,
+    paddingRight: 20,
+    paddingTop: 10,
     flex: 1,
     backgroundColor: "white",
   },

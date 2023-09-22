@@ -1,7 +1,7 @@
 import { Pressable, StyleSheet, Animated, Easing } from "react-native";
 import { MenuSvg, SearchSvg } from "../../assets/svg";
 import { useState } from "react";
-const OrderButton = (props) => {
+const MenuButton = (props) => {
   const { onPress } = props;
 
   const [isRotated, setIsRotated] = useState(false);
@@ -43,7 +43,7 @@ const style = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     borderRadius: 30,
-    margin: 20,
+    marginLeft: 20,
   },
 });
-export default OrderButton;
+export default MenuButton;

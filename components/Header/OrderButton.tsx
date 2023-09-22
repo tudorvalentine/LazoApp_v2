@@ -40,7 +40,7 @@ const style = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     borderRadius: 30,
-    margin: 20,
+    marginRight: 20,
   },
 });
 export default OrderButton;

@@ -1,21 +1,31 @@
-import { Text, View, StyleSheet, Image, Pressable } from "react-native";
+import {
+  Text,
+  View,
+  StyleSheet,
+  Image,
+  Pressable,
+  TouchableOpacity,
+} from "react-native";
 import { HeartSvg } from "../assets/svg";
+import { TouchableRipple } from "react-native-paper";
 
-const ProductCard = () => {
+const ProductCard = ({ onPress }) => {
   return (
-    <View style={styles.container}>
-      <Pressable style={styles.favorite}>
-        <HeartSvg />
-      </Pressable>
-      <Image
-        style={styles.cardCover}
-        source={require("../assets/img/batnik.png")}
-      />
+    <TouchableRipple style={styles.container} onPress={onPress}>
       <View>
-        <Text style={styles.cardTitle}>Nike Sportswear Club Fleece</Text>
-        <Text style={styles.priceProd}>$99</Text>
+        <Pressable style={styles.favorite}>
+          <HeartSvg />
+        </Pressable>
+        <Image
+          style={styles.cardCover}
+          source={require("../assets/img/batnik.png")}
+        />
+        <View>
+          <Text style={styles.cardTitle}>Nike Sportswear Club Fleece</Text>
+          <Text style={styles.priceProd}>$99</Text>
+        </View>
       </View>
-    </View>
+    </TouchableRipple>
   );
 };
 const styles = StyleSheet.create({
