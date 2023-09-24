@@ -61,6 +61,7 @@ const Home = (props) => {
           showsHorizontalScrollIndicator={false} // Optional: Hide the horizontal scrollbar
         />
       </View>
+
       <SectionHead
         title="New Arraival"
         titleOfAction="View All"
@@ -71,7 +72,7 @@ const Home = (props) => {
       <View>
         <ProductCard
           onPress={() => {
-            navigation.navigate("Rev");
+            navigation.navigate("ProductDetailsScreen");
           }}
         />
       </View>

@@ -1,20 +1,35 @@
 import { View, Text, StyleSheet } from "react-native";
 import useScreenHeader from "../../hooks/useScreenHeader";
-import { useNavigation } from "@react-navigation/native";
+import styles from "./styles";
+import { AddReviewIconSvg, StarsSvg } from "../../assets/svg";
+import { Button } from "react-native-paper";
 const ReviewsScreen = () => {
-  const navigation = useNavigation();
-  navigation.setOptions({
-    headerShown: false,
-  });
   useScreenHeader({
     title: "Reviews",
     hasLeftArrow: true,
-    headerTitleAlign: "center",
-    headerTitleStyle: { fontSize: 17, fontFamily: "ir-bold", color: "#1D1E20" },
+    headerStyle: { height: 120 },
   });
   return (
-    <View>
-      <Text>Screen Content</Text>
+    <View style={styles.container}>
+      <View style={styles.addReviewSect}>
+        <View>
+          <Text>248 Reviews</Text>
+          <View style={styles.averageRev}>
+            <Text>4.8</Text>
+            <StarsSvg />
+          </View>
+        </View>
+        <View>
+          <Button
+            mode="contained"
+            buttonColor="#FF7043"
+            style={styles.btnAddRev}
+            icon={}
+          >
+            Add Review
+          </Button>
+        </View>
+      </View>
     </View>
   );
 };

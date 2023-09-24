@@ -2,8 +2,17 @@ import { View, Text, StyleSheet, Pressable } from "react-native";
 import SectionTitle from "./SectionTitle";
 import Subtitle from "../Subtitle";
 
-const SectionHead = (props) => {
-  const { title, titleOfAction, onPressAction } = props;
+interface SectionHeadProps {
+  title: string;
+  titleOfAction: string;
+  onPressAction;
+}
+
+const SectionHead = ({
+  title,
+  titleOfAction,
+  onPressAction,
+}: SectionHeadProps) => {
   return (
     <View style={styles.container}>
       <SectionTitle text={title} />

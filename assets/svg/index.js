@@ -13,3 +13,5 @@ export { default as AdidasSvg } from "./Adidas";
 export { default as PumaSvg } from "./Puma";
 export { default as FilaSvg } from "./Fila";
 export { default as NikeSvg } from "./Nike";
+export { default as StarsSvg } from "./Stars";
+export { default as AddReviewIconSvg } from "./AddReviewIcon";

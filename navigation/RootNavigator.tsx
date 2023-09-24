@@ -1,24 +1,20 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-// Screens
-import Home from "../Screens/HomeScreen/Home";
+
+import HomeStackScreen from "./HomeStackScreen";
+import { HomeSvg, HeartSvg, BagSvg, CardSvg } from "../assets/svg";
 import Wishlist from "../Screens/WishlistScreen/WishlistScreen";
 import Orders from "../Screens/OrdersScreen/Orders";
 import Cards from "../Screens/CardsScreen/Cards";
-
-// SVG
-import { SearchSvg, HeartSvg, BagSvg, CardSvg, HomeSvg } from "../assets/svg";
 import OrderButton from "../components/Header/OrderButton";
-import MenuButton from "../components/Header/MenuButton";
 import BackButton from "../components/Header/BackButton";
 
-const BottomTabNavigator = () => {
+const RootNavigator = () => {
   const Tab = createBottomTabNavigator();
-
   return (
     <Tab.Navigator>
       <Tab.Screen
         name="Home"
-        component={Home}
+        component={HomeStackScreen}
         options={{
           tabBarIcon: ({ color }) => <HomeSvg stroke={color} />,
           tabBarShowLabel: false,
@@ -63,4 +59,4 @@ const BottomTabNavigator = () => {
   );
 };
 
-export default BottomTabNavigator;
+export default RootNavigator;

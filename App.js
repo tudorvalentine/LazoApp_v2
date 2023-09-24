@@ -2,14 +2,9 @@ import { useFonts } from "expo-font";
 import React, { useCallback } from "react";
 import { PaperProvider } from "react-native-paper";
 import { NavigationContainer, useNavigation } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-
-import ScreenStackNavigator from "./navigation/ScreenStackNavigator";
+import RootNavigator from "./navigation/RootNavigator";
 
 const App = () => {
-  const Stack = createNativeStackNavigator();
-  const Tab = createBottomTabNavigator();
   const [fontsLoaded, fontError] = useFonts({
     "ir-black": require("./assets/fonts/Inter-Black.ttf"),
     "ir-bold": require("./assets/fonts/Inter-Bold.ttf"),
@@ -32,7 +27,7 @@ const App = () => {
   return (
     <PaperProvider>
       <NavigationContainer>
-        <ScreenStackNavigator />
+        <RootNavigator />
       </NavigationContainer>
     </PaperProvider>
   );

@@ -14,7 +14,8 @@ interface IScreenHeader {
   headerTitleStyle?: Object;
   headerTitleAlign?: string;
   headerTransparent?: boolean;
-  headerShown?: boolean;
+  parentHeaderShown?: boolean;
+  tabBarVisible?: boolean;
 }
 
 const useScreenHeader = ({
@@ -26,9 +27,12 @@ const useScreenHeader = ({
   headerTitleStyle,
   headerTitleAlign = "center",
   headerTransparent,
-  headerShown = false,
+  parentHeaderShown = false,
 }: IScreenHeader) => {
   const navigation = useNavigation();
+  navigation.getParent().setOptions({
+    headerShown: parentHeaderShown,
+  });
   useLayoutEffect(() => {
     navigation.setOptions({
       title,
