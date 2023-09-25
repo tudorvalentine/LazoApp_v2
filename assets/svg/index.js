@@ -15,3 +15,4 @@ export { default as FilaSvg } from "./Fila";
 export { default as NikeSvg } from "./Nike";
 export { default as StarsSvg } from "./Stars";
 export { default as AddReviewIconSvg } from "./AddReviewIcon";
+export { default as TimeIcoSvg } from "./TimeIco";

@@ -3,7 +3,10 @@ import useScreenHeader from "../../hooks/useScreenHeader";
 import styles from "./styles";
 import { AddReviewIconSvg, StarsSvg } from "../../assets/svg";
 import { Button } from "react-native-paper";
+import TemplateReview from "../../components/TemplateReview";
+import { useNavigation } from "@react-navigation/native";
 const ReviewsScreen = () => {
+  const naivgation = useNavigation();
   useScreenHeader({
     title: "Reviews",
     hasLeftArrow: true,
@@ -24,12 +27,19 @@ const ReviewsScreen = () => {
             mode="contained"
             buttonColor="#FF7043"
             style={styles.btnAddRev}
-            icon={}
+            icon={() => <AddReviewIconSvg />}
+            onPress={() => {
+              naivgation.navigate("AddReview");
+            }}
           >
             Add Review
           </Button>
         </View>
       </View>
+      <TemplateReview style={{ marginTop: 20 }} />
+      <TemplateReview style={{ marginTop: 20 }} />
+      <TemplateReview style={{ marginTop: 20 }} />
+      <TemplateReview style={{ marginTop: 20 }} />
     </View>
   );
 };

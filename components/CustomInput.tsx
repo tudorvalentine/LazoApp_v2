@@ -1,10 +1,22 @@
 import { View, StyleSheet } from "react-native";
 import { TextInput } from "react-native-paper";
 
-const CustomInput = (props) => {
-  const { placeholder, icon } = props;
+interface InputProp {
+  placeholder?: string;
+  icon?: any;
+  multiline?: boolean;
+  numberOfLines?: number;
+}
+const CustomInput = ({
+  placeholder,
+  icon,
+  multiline = false,
+  numberOfLines = 1,
+}: InputProp) => {
   return icon != undefined ? (
     <TextInput
+      multiline={multiline}
+      numberOfLines={numberOfLines}
       mode="outlined"
       left={<TextInput.Icon icon={() => icon} />}
       placeholder={placeholder}
@@ -15,6 +27,8 @@ const CustomInput = (props) => {
     />
   ) : (
     <TextInput
+      multiline={multiline}
+      numberOfLines={numberOfLines}
       mode="outlined"
       placeholder={placeholder}
       placeholderTextColor="#8F959E"

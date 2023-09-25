@@ -10,6 +10,7 @@ import {
 } from "react-native";
 import useScreenHeader from "../../hooks/useScreenHeader";
 import SectionHead from "../../components/SectionHead/SectionHead";
+import styles from "./styles";
 
 const ProductDetailsScreen = ({ navigation }) => {
   useScreenHeader({
@@ -37,17 +38,5 @@ const ProductDetailsScreen = ({ navigation }) => {
     </>
   );
 };
-
-const styles = StyleSheet.create({
-  AndroidSafeArea: {
-    flex: 1,
-    backgroundColor: "white",
-    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
-  },
-  image: {
-    width: "100%",
-    height: "70%",
-  },
-});
 
 export default ProductDetailsScreen;

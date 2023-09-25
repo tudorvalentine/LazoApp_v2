@@ -8,6 +8,7 @@ const styles = StyleSheet.create({
     paddingStart: 20,
   },
   addReviewSect: {
+    marginTop: 20,
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
