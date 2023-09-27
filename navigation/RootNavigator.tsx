@@ -3,7 +3,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import HomeStackScreen from "./HomeStackScreen";
 import { HomeSvg, HeartSvg, BagSvg, CardSvg } from "../assets/svg";
 import Wishlist from "../Screens/WishlistScreen/WishlistScreen";
-import Orders from "../Screens/OrdersScreen/Orders";
+import Cart from "../Screens/CartScreen/Cart";
 import Cards from "../Screens/CardsScreen/Cards";
 import OrderButton from "../components/Header/OrderButton";
 import BackButton from "../components/Header/BackButton";
@@ -38,8 +38,8 @@ const RootNavigator = () => {
         }}
       />
       <Tab.Screen
-        name="Orders"
-        component={Orders}
+        name="Cart"
+        component={Cart}
         options={{
           tabBarLabel: "",
           tabBarShowLabel: false,

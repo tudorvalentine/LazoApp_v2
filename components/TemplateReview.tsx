@@ -2,10 +2,18 @@ import { View, StyleSheet, Image, Text } from "react-native";
 import { TimeIcoSvg, StarsSvg } from "../assets/svg";
 
 interface CustomStyle {
+  authorName?: string;
+  ratingValue?: number;
+  reviewText?: string;
   style?: Object;
 }
 
-const TemplateReview = ({ style }: CustomStyle) => {
+const TemplateReview = ({
+  style,
+  authorName,
+  ratingValue,
+  reviewText,
+}: CustomStyle) => {
   return (
     <View style={style}>
       <View style={styles.container}>
@@ -20,7 +28,7 @@ const TemplateReview = ({ style }: CustomStyle) => {
             />
           </View>
           <View style={{ marginLeft: 10 }}>
-            <Text style={styles.authorName}>Jenny Wilson</Text>
+            <Text style={styles.authorName}>{authorName}</Text>
             <View style={styles.containerTime}>
               <TimeIcoSvg />
               <Text style={styles.postTime}>13 Sep, 2020</Text>
@@ -28,20 +36,12 @@ const TemplateReview = ({ style }: CustomStyle) => {
           </View>
         </View>
         <View>
-          <Text>248 Reviews</Text>
-          <View style={styles.averageRev}>
-            <Text>4.8</Text>
-            <StarsSvg />
-          </View>
+          <Text>{ratingValue} rating</Text>
+          <StarsSvg />
         </View>
       </View>
       <View>
-        <Text style={styles.textReview}>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt nisi
-          necessitatibus, libero rem quis accusantium ut, molestias odio numquam
-          praesentium distinctio qui alias perspiciatis harum est maxime iste!
-          Nemo, accusantium.
-        </Text>
+        <Text style={styles.textReview}>{reviewText}</Text>
       </View>
     </View>
   );

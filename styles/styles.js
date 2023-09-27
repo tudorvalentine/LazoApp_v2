@@ -18,4 +18,5 @@ export const g_style = StyleSheet.create({
     textAlign: "center",
     fontSize: 14,
   },
+  h2: {},
 });
