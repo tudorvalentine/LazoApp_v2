@@ -30,9 +30,13 @@ const useScreenHeader = ({
   parentHeaderShown = false,
 }: IScreenHeader) => {
   const navigation = useNavigation();
-  navigation.getParent().setOptions({
-    headerShown: parentHeaderShown,
-  });
+  const parentNavigation = navigation.getParent();
+
+  if (parentNavigation) {
+    parentNavigation.setOptions({
+      headerShown: parentHeaderShown,
+    });
+  }
   useLayoutEffect(() => {
     navigation.setOptions({
       title,

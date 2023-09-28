@@ -16,3 +16,6 @@ export { default as NikeSvg } from "./Nike";
 export { default as StarsSvg } from "./Stars";
 export { default as AddReviewIconSvg } from "./AddReviewIcon";
 export { default as TimeIcoSvg } from "./TimeIco";
+export { default as DownArrowSvg } from "./DownArrow";
+export { default as UpArrowSvg } from "./UpArrow";
+export { default as DeleteItemSvg } from "./DeleteItem";
