@@ -7,6 +7,7 @@ import Cart from "../Screens/CartScreen/Cart";
 import Cards from "../Screens/CardsScreen/Cards";
 import OrderButton from "../components/Header/OrderButton";
 import BackButton from "../components/Header/BackButton";
+import Payment from "../Screens/PaymentScreen/Payment";
 
 const RootNavigator = () => {
   const Tab = createBottomTabNavigator();
@@ -47,10 +48,9 @@ const RootNavigator = () => {
         }}
       />
       <Tab.Screen
-        name="Cards"
-        component={Cards}
+        name="Payment"
+        component={Payment}
         options={{
-          tabBarLabel: "",
           tabBarShowLabel: false,
           tabBarIcon: ({ color }) => <CardSvg stroke={color} />,
         }}
