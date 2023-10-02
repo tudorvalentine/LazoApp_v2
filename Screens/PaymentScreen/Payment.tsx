@@ -2,6 +2,7 @@ import { View, Text } from "react-native";
 import useScreenHeader from "../../hooks/useScreenHeader";
 import { Surface } from "react-native-paper";
 import styles from "./styles";
+import PaymentCard from "../../components/PaymentCard";
 
 const Payment = () => {
   useScreenHeader({
@@ -11,12 +12,7 @@ const Payment = () => {
   });
   return (
     <View style={styles.container}>
-      <Surface style={styles.cardItemContainer}>
-        <View style={styles.itemCardHead}>
-          <Text>Owner</Text>
-          <Text>Type</Text>
-        </View>
-      </Surface>
+      <PaymentCard />
     </View>
   );
 };
