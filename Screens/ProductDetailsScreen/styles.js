@@ -42,10 +42,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
   },
-  price: {
-    fontSize: 15,
-    fontFamily: "ir-bold",
-  },
 });
 
 export default styles;

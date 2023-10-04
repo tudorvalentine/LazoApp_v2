@@ -21,3 +21,6 @@ export { default as UpArrowSvg } from "./UpArrow";
 export { default as DeleteItemSvg } from "./DeleteItem";
 export { default as MasterCardIconSvg } from "./MasterCardIcon";
 export { default as VisaIconSvg } from "./VisaIcon";
+export { default as AddCardIconBtnSvg } from "./AddCardIconBtn";
+export { default as RightArrowSvg } from "./RightArrow";
+export { default as LocationSvg } from "./Location";

@@ -1,10 +1,11 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 import HomeStackScreen from "./HomeStackScreen";
+import PaymentStackScreen from "./PaymentStackScreen";
+
 import { HomeSvg, HeartSvg, BagSvg, CardSvg } from "../assets/svg";
 import Wishlist from "../Screens/WishlistScreen/WishlistScreen";
 import Cart from "../Screens/CartScreen/Cart";
-import Cards from "../Screens/CardsScreen/Cards";
 import OrderButton from "../components/Header/OrderButton";
 import BackButton from "../components/Header/BackButton";
 import Payment from "../Screens/PaymentScreen/Payment";
@@ -49,7 +50,7 @@ const RootNavigator = () => {
       />
       <Tab.Screen
         name="Payment"
-        component={Payment}
+        component={PaymentStackScreen}
         options={{
           tabBarShowLabel: false,
           tabBarIcon: ({ color }) => <CardSvg stroke={color} />,

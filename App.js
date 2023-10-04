@@ -1,9 +1,11 @@
 import { useFonts } from "expo-font";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 import React, { useCallback } from "react";
 import { PaperProvider } from "react-native-paper";
 import { NavigationContainer, useNavigation } from "@react-navigation/native";
 import RootNavigator from "./navigation/RootNavigator";
-
+import { createDrawerNavigator } from "@react-navigation/drawer";
+const Drawer = createDrawerNavigator();
 const App = () => {
   const [fontsLoaded, fontError] = useFonts({
     "ir-black": require("./assets/fonts/Inter-Black.ttf"),
@@ -25,11 +27,13 @@ const App = () => {
     return null;
   }
   return (
-    <PaperProvider>
-      <NavigationContainer>
-        <RootNavigator />
-      </NavigationContainer>
-    </PaperProvider>
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <PaperProvider>
+        <NavigationContainer>
+          <RootNavigator />
+        </NavigationContainer>
+      </PaperProvider>
+    </GestureHandlerRootView>
   );
 };
 

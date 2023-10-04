@@ -88,10 +88,10 @@ const ProductDetailsScreen = ({ navigation }) => {
           }}
         >
           <View>
-            <Text style={styles.price}>Total Price</Text>
+            <Text style={g_style.price}>Total Price</Text>
             <Subtitle subtitleText="with VAT, SD" />
           </View>
-          <Text style={styles.price}> $125 </Text>
+          <Text style={g_style.price}> $125 </Text>
         </View>
       </ScrollView>
     </>

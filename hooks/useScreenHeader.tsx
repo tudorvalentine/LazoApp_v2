@@ -48,7 +48,7 @@ const useScreenHeader = ({
           return <BackButton />;
         }
         if (hasLeftMenu) {
-          return <MenuButton />;
+          return <MenuButton onPress={() => {}} />;
         }
       },
       headerRight: () => {

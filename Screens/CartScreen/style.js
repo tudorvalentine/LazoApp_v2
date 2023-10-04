@@ -6,6 +6,33 @@ const styles = StyleSheet.create({
     paddingRight: 20,
     paddingLeft: 20,
   },
+  deliverySurface: {
+    width: 50,
+    height: 50,
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: 10,
+  },
+  containerDeliveryPayment: {
+    paddingTop: 15,
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  textAdress: {
+    fontSize: 15,
+    fontFamily: "ir-regular",
+    paddingBottom: 10,
+  },
+  textCity: {
+    fontSize: 13,
+    color: "#8F959E",
+    fontFamily: "ir-regular",
+  },
+  totalsContainer: {
+    paddingTop: 15,
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
 });
 
 export default styles;

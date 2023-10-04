@@ -1,6 +1,6 @@
-import { Button, Text, ActivityIndicator } from "react-native-paper";
+import { Button, Text } from "react-native-paper";
 
-export default function BottomButton({ onPress, buttonText, indicator }) {
+export default function BottomButton({ onPress, buttonText }) {
   return (
     <Button
       mode="contained"

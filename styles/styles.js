@@ -10,7 +10,7 @@ export const g_style = StyleSheet.create({
     fontFamily: "ir-regular",
     color: "#8F959E",
     fontSize: 15,
-    textAlign: "center",
+    // textAlign: "center",
   },
   errMsg: {
     fontFamily: "ir-black",
@@ -18,5 +18,13 @@ export const g_style = StyleSheet.create({
     textAlign: "center",
     fontSize: 14,
   },
-  h2: {},
+  label: {
+    paddingTop: 20,
+    fontSize: 17,
+    fontFamily: "ir-semi-bold",
+  },
+  price: {
+    fontSize: 15,
+    fontFamily: "ir-bold",
+  },
 });

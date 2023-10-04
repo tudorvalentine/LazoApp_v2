@@ -1,16 +1,43 @@
 import { StyleSheet, View, Text } from "react-native";
 import { Surface } from "react-native-paper";
 import { MasterCardIconSvg, VisaIconSvg } from "../assets/svg";
-const PaymentCard = () => {
+
+interface CardData {
+  owner?: string;
+  cardNumber?: string;
+  style?: any;
+}
+const generateColor = () => {
+  const randomColor = Math.floor(Math.random() * 16777215)
+    .toString(16)
+    .padStart(6, "0");
+  return `#${randomColor}`;
+};
+
+const getTextColor = (hexColor) => {
+  // Convert hex to RGB
+  const r = parseInt(hexColor.slice(1, 3), 16);
+  const g = parseInt(hexColor.slice(3, 5), 16);
+  const b = parseInt(hexColor.slice(5, 7), 16);
+
+  // Calculate the relative luminance
+  const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+
+  // Use white text for dark background colors, and black text for light background colors
+  return luminance > 0.5 ? "#000000" : "#FFFFFF";
+};
+const cardBgColor = generateColor();
+const textColor = getTextColor(cardBgColor);
+const PaymentCard = ({ style, owner, cardNumber }: CardData) => {
   return (
-    <Surface style={styles.cardItemContainer}>
+    <Surface style={[styles.cardItemContainer, style]}>
       <View style={styles.itemCardHead}>
-        <Text style={[styles.textColor, styles.ownerName]}>Popescu Tudor</Text>
-        <VisaIconSvg />
+        <Text style={[styles.textColor, styles.ownerName]}>{owner}</Text>
+        <VisaIconSvg color={textColor} />
       </View>
       <View style={{ marginBottom: 20 }}>
         <Text style={[styles.textColor, styles.cardNumber]}>
-          5254 **** **** 7690
+          {cardNumber.replace(/\b (\d{4}) (\d{4}) \b/, " **** **** ")}
         </Text>
       </View>
     </Surface>
@@ -20,8 +47,8 @@ const styles = StyleSheet.create({
   cardItemContainer: {
     padding: 20,
     borderRadius: 10,
-    backgroundColor: "#FFCB3C",
-    height: 210,
+    backgroundColor: cardBgColor,
+    height: "75%",
     justifyContent: "space-between",
   },
   itemCardHead: {
@@ -30,7 +57,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   textColor: {
-    color: "#FEFEFE",
+    // color: "#FEFEFE" ,
+    color: textColor,
   },
   ownerName: { fontFamily: "ir-bold" },
   cardNumber: {
