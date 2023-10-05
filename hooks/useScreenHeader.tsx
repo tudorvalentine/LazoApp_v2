@@ -54,7 +54,7 @@ const useScreenHeader = ({
       headerRight: () => {
         if (hasRight) return <OrderButton />;
       },
-      headerStyle: headerStyle,
+      headerStyle: { ...headerStyle },
     });
   }, [navigation]);
 };

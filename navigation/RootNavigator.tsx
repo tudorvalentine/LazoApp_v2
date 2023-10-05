@@ -9,6 +9,7 @@ import Cart from "../Screens/CartScreen/Cart";
 import OrderButton from "../components/Header/OrderButton";
 import BackButton from "../components/Header/BackButton";
 import Payment from "../Screens/PaymentScreen/Payment";
+import CartStackScreen from "./CartStackScreen";
 
 const RootNavigator = () => {
   const Tab = createBottomTabNavigator();
@@ -41,7 +42,7 @@ const RootNavigator = () => {
       />
       <Tab.Screen
         name="Cart"
-        component={Cart}
+        component={CartStackScreen}
         options={{
           tabBarLabel: "",
           tabBarShowLabel: false,

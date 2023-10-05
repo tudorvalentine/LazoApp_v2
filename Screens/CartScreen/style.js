@@ -3,8 +3,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-    paddingRight: 20,
-    paddingLeft: 20,
+    paddingHorizontal: 20,
+    paddingTop: 20,
   },
   deliverySurface: {
     width: 50,
@@ -32,6 +32,13 @@ const styles = StyleSheet.create({
     paddingTop: 15,
     flexDirection: "row",
     justifyContent: "space-between",
+  },
+  headerBottomSheet: {
+    backgroundColor: "white",
+    padding: 16,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
   },
 });
 

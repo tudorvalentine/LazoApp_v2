@@ -24,3 +24,5 @@ export { default as VisaIconSvg } from "./VisaIcon";
 export { default as AddCardIconBtnSvg } from "./AddCardIconBtn";
 export { default as RightArrowSvg } from "./RightArrow";
 export { default as LocationSvg } from "./Location";
+export { default as ThreeDotsSvg } from "./ThreeDots";
+export { default as SortIconSvg } from "./SortIcon";

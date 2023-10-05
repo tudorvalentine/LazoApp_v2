@@ -4,14 +4,18 @@ import styles from "./style";
 import CartItem from "../../components/CartItem/CartItem";
 import { g_style } from "../../styles/styles";
 import { LocationSvg, RightArrowSvg, VisaIconSvg } from "../../assets/svg";
-import { Surface, TouchableRipple } from "react-native-paper";
+import { RadioButton, Surface, Button } from "react-native-paper";
 import BottomSheet from "@gorhom/bottom-sheet";
-import React, { useCallback, useMemo, useRef, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useRef } from "react";
+import AddressItemBottomSheet from "../../components/CartScreen/AddressItemBottomSheet";
+import { useNavigation } from "@react-navigation/native";
 
 const Cart = () => {
+  const navigation = useNavigation();
   // ref
   const addressBottomSheetRef = useRef<BottomSheet>(null);
   const paymentBottomSheetRef = useRef<BottomSheet>(null);
+  // Set initial index to hide the bottom sheets
 
   // variables
   const snapPoints = useMemo(() => ["40%", "70%"], []);
@@ -20,12 +24,14 @@ const Cart = () => {
   const handleSheetChanges = useCallback((index: number) => {
     console.log("handleSheetChanges", index);
   }, []);
-
   useScreenHeader({
     hasLeftArrow: true,
     title: "Cart",
-    headerStyle: { height: 125 },
+    headerStyle: { height: 120 },
   });
+
+  const [value, setValue] = React.useState("first");
+
   return (
     <View style={styles.container}>
       <CartItem style={{ marginBottom: 20 }} />
@@ -105,38 +111,55 @@ const Cart = () => {
       </View>
       <BottomSheet
         ref={addressBottomSheetRef}
-        index={0}
+        index={-1}
         snapPoints={snapPoints}
         onChange={handleSheetChanges}
         enablePanDownToClose={true}
       >
-        <View style={{ backgroundColor: "white", padding: 16 }}>
-          <Text>Address </Text>
-          <Pressable
+        <View style={styles.headerBottomSheet}>
+          <Text style={[g_style.page_title, { textAlign: "center" }]}>
+            Address List
+          </Text>
+          <Button
+            mode="contained"
+            buttonColor="#9775FA"
+            style={{ borderRadius: 10 }}
             onPress={() => {
-              addressBottomSheetRef.current.close(); // Close the bottom sheet
+              navigation.navigate("AddNewAddress");
             }}
           >
-            <Text>Close Bottom Sheet</Text>
-          </Pressable>
+            New Address
+          </Button>
+        </View>
+        <View>
+          <RadioButton.Group
+            value={value}
+            onValueChange={(newValue) => setValue(newValue)}
+          >
+            <AddressItemBottomSheet />
+            <AddressItemBottomSheet />
+          </RadioButton.Group>
         </View>
       </BottomSheet>
       <BottomSheet
         ref={paymentBottomSheetRef}
-        index={1}
+        index={-1}
         snapPoints={snapPoints}
         onChange={handleSheetChanges}
         enablePanDownToClose={true}
       >
-        <View style={{ backgroundColor: "white", padding: 16 }}>
-          <Text>Payment </Text>
-          <Pressable
+        <View style={styles.headerBottomSheet}>
+          <Text style={g_style.page_title}>Cards List</Text>
+          <Button
+            mode="contained"
+            buttonColor="#9775FA"
+            style={{ borderRadius: 10 }}
             onPress={() => {
-              paymentBottomSheetRef.current.close(); // Close the bottom sheet
+              navigation.navigate("AddNewCardScreen");
             }}
           >
-            <Text>Close Bottom Sheet</Text>
-          </Pressable>
+            Add Card
+          </Button>
         </View>
       </BottomSheet>
     </View>

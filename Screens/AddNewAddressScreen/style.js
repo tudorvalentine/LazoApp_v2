@@ -3,13 +3,16 @@ import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
     paddingHorizontal: 20,
+    backgroundColor: "#fff",
   },
-  sortSection: {
+  countryCityContainer: {
     flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
+  },
+  containerBottomBtn: {
+    flex: 1,
+    justifyContent: "flex-end",
+    paddingBottom: 20,
   },
 });
 
