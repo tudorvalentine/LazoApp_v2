@@ -5,6 +5,10 @@ import { PaperProvider } from "react-native-paper";
 import { NavigationContainer, useNavigation } from "@react-navigation/native";
 import RootNavigator from "./navigation/RootNavigator";
 import { createDrawerNavigator } from "@react-navigation/drawer";
+
+import { Provider } from "react-redux";
+import store from "./redux/store";
+
 const Drawer = createDrawerNavigator();
 const App = () => {
   const [fontsLoaded, fontError] = useFonts({
@@ -30,7 +34,9 @@ const App = () => {
     <GestureHandlerRootView style={{ flex: 1 }}>
       <PaperProvider>
         <NavigationContainer>
-          <RootNavigator />
+          <Provider store={store}>
+            <RootNavigator />
+          </Provider>
         </NavigationContainer>
       </PaperProvider>
     </GestureHandlerRootView>

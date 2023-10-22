@@ -2,7 +2,9 @@ import { View, Text, StyleSheet, FlatList } from "react-native";
 import React from "react";
 import Title from "../../components/Title";
 import Subtitle from "../../components/Subtitle";
-import { TextInput } from "react-native-paper";
+
+import { useEffect } from "react";
+
 import {
   AdidasSvg,
   FilaSvg,
@@ -16,6 +18,9 @@ import SectionHead from "../../components/SectionHead/SectionHead";
 import ProductCard from "../../components/ProductCard";
 import useScreenHeader from "../../hooks/useScreenHeader";
 import { useNavigation } from "@react-navigation/native";
+import { useGetBrandsQuery } from "../../redux/api/lazoApi";
+import { useLoginMutation } from "../../redux/api/authApi";
+import { isLoading } from "expo-font";
 const Home = (props) => {
   const navigation = useNavigation();
   useScreenHeader({
@@ -25,6 +30,23 @@ const Home = (props) => {
       height: 130,
     },
   });
+  const [login, { isLoading: loginLoading, isError: loginError }] =
+    useLoginMutation();
+  const handleLogin = async () => {
+    const resp = await login({
+      username: "tudor",
+      password: "popesKu1903",
+    }).unwrap();
+    return resp;
+  };
+  const {
+    data: brands,
+    isLoading: brandsLoading,
+    isError: brandsError,
+  } = useGetBrandsQuery();
+  useEffect(() => {
+    console.log("data : ", brands);
+  }, [brands, brandsLoading]);
 
   const data = [
     { id: "1", text: "Adidas", icon: <AdidasSvg /> },
