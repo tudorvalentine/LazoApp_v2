@@ -1,7 +1,7 @@
 import { combineReducers } from "redux";
-import { authApi } from "./api/authApi";
-import { lazoApi } from "./api/lazoApi";
-import authReducer from "./slices/authSlice";
+import { authApi } from "../api/authApi";
+import { lazoApi } from "../api/lazoApi";
+import authReducer from "../slices/authSlice";
 
 const rootReducer = combineReducers({
   [authApi.reducerPath]: authApi.reducer,

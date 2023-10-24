@@ -5,59 +5,65 @@ import PaymentStackScreen from "./PaymentStackScreen";
 
 import { HomeSvg, HeartSvg, BagSvg, CardSvg } from "../assets/svg";
 import Wishlist from "../Screens/WishlistScreen/WishlistScreen";
-import Cart from "../Screens/CartScreen/Cart";
 import OrderButton from "../components/Header/OrderButton";
 import BackButton from "../components/Header/BackButton";
-import Payment from "../Screens/PaymentScreen/Payment";
 import CartStackScreen from "./CartStackScreen";
+import AuthenticationStackScreen from "./AuthenticationStackScreen";
 
 const RootNavigator = () => {
   const Tab = createBottomTabNavigator();
+  const isAuthenticated = false;
   return (
-    <Tab.Navigator>
-      <Tab.Screen
-        name="Home"
-        component={HomeStackScreen}
-        options={{
-          tabBarIcon: ({ color }) => <HomeSvg stroke={color} />,
-          tabBarShowLabel: false,
-        }}
-      />
-      <Tab.Screen
-        name="Wishlist"
-        component={Wishlist}
-        options={{
-          title: "Wishlist",
-          tabBarShowLabel: false,
-          headerTitleAlign: "center",
-          headerTitleStyle: {
-            fontSize: 17,
-            fontFamily: "ir-bold",
-            color: "#1D1E20",
-          },
-          tabBarIcon: ({ color }) => <HeartSvg stroke={color} />,
-          headerRight: () => <OrderButton />,
-          headerLeft: () => <BackButton />,
-        }}
-      />
-      <Tab.Screen
-        name="Cart"
-        component={CartStackScreen}
-        options={{
-          tabBarLabel: "",
-          tabBarShowLabel: false,
-          tabBarIcon: ({ color }) => <BagSvg stroke={color} />,
-        }}
-      />
-      <Tab.Screen
-        name="Payment"
-        component={PaymentStackScreen}
-        options={{
-          tabBarShowLabel: false,
-          tabBarIcon: ({ color }) => <CardSvg stroke={color} />,
-        }}
-      />
-    </Tab.Navigator>
+    <>
+      {isAuthenticated == true ? (
+        <Tab.Navigator>
+          <Tab.Screen
+            name="Home"
+            component={HomeStackScreen}
+            options={{
+              tabBarIcon: ({ color }) => <HomeSvg stroke={color} />,
+              tabBarShowLabel: false,
+            }}
+          />
+          <Tab.Screen
+            name="Wishlist"
+            component={Wishlist}
+            options={{
+              title: "Wishlist",
+              tabBarShowLabel: false,
+              headerTitleAlign: "center",
+              headerTitleStyle: {
+                fontSize: 17,
+                fontFamily: "ir-bold",
+                color: "#1D1E20",
+              },
+              tabBarIcon: ({ color }) => <HeartSvg stroke={color} />,
+              headerRight: () => <OrderButton />,
+              headerLeft: () => <BackButton />,
+            }}
+          />
+          <Tab.Screen
+            name="Cart"
+            component={CartStackScreen}
+            options={{
+              tabBarLabel: "",
+              tabBarShowLabel: false,
+              tabBarIcon: ({ color }) => <BagSvg stroke={color} />,
+            }}
+          />
+          <Tab.Screen
+            name="Payment"
+            component={PaymentStackScreen}
+            options={{
+              tabBarShowLabel: false,
+              tabBarIcon: ({ color }) => <CardSvg stroke={color} />,
+            }}
+          />
+        </Tab.Navigator>
+      ) : (
+        <AuthenticationStackScreen />
+      )}
+    </>
   );
 };
 

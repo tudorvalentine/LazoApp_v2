@@ -1,6 +1,11 @@
 import { Button, Text } from "react-native-paper";
 
-export default function BottomButton({ onPress, buttonText }) {
+interface IBottomButton {
+  onPress?: any;
+  buttonText?: string;
+}
+
+export default function BottomButton({ onPress, buttonText }: IBottomButton) {
   return (
     <Button
       mode="contained"

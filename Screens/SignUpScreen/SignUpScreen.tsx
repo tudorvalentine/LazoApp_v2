@@ -9,8 +9,6 @@ import { useState } from "react";
 
 import { g_style } from "../../styles/styles";
 import BottomButton from "../../components/BottomButton";
-import axios from "axios";
-import { getJwtToken, saveJwtToken } from "../../utils/AuthUtils";
 
 export default function SignUpScreen({ navigation }) {
   const [isSwitchOn, setIsSwitchOn] = useState(false);
@@ -22,39 +20,6 @@ export default function SignUpScreen({ navigation }) {
 
   const [loading, setLoading] = useState(false);
   const [errMsg, setErrMsg] = useState("");
-  const registerNewUser = () => {
-    setLoading(true);
-    axios
-      .post("http://192.168.8.119:8080/api/register.php", {
-        username: username,
-        pass: password,
-        email: email,
-      })
-      .then(function (response) {
-        console.log(response.data);
-        // if new user is successfully registered
-        if (response.data.success) {
-          setErrMsg("");
-
-          saveJwtToken(response.data.jwt);
-          console.log(getJwtToken);
-          navigation.navigate("MainPage");
-        } else if (response.data.error_code == "23505") {
-          setErrMsg("User with this username or email already exists");
-        } else {
-          setErrMsg("Unknown error when register. Try later.");
-        }
-      })
-      .catch(function (error) {
-        console.log(error);
-        setErrMsg("Unknown error when register. Try later.");
-      })
-      .finally(function () {
-        setTimeout(() => {
-          setLoading(false);
-        }, 1000);
-      });
-  };
   return (
     <>
       {!loading ? (
@@ -127,7 +92,7 @@ export default function SignUpScreen({ navigation }) {
             }}
           >
             <Text style={g_style.errMsg}>{errMsg}</Text>
-            <BottomButton buttonText="Sign Up" onPress={registerNewUser} />
+            <BottomButton buttonText="Sign Up" />
           </View>
         </>
       ) : (

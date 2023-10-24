@@ -1,4 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { RootState } from "../store";
+import { BASE_URL } from "./api.config";
 interface IBrand {
   brand_id: number;
   brand_name: string;
@@ -7,10 +9,10 @@ interface IBrand {
 export const lazoApi = createApi({
   reducerPath: "lazoApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "http://192.168.8.119:8000/lazoapi/",
+    baseUrl: BASE_URL,
     prepareHeaders: (headers, { getState }) => {
-      const access_token =
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjk3OTY5MDAwLCJpYXQiOjE2OTc5NjE4MDAsImp0aSI6IjM4NzhkYTczYzFhNDQzMWU5NTM2OTY2MzhiMTM0MzAxIiwidXNlcl9pZCI6MX0.XoU6g-JEv69Ln1w6gwL3USrLrU28gn0FeCPItBTzMCI";
+      const access_token = (getState() as RootState).auth.accessToken;
+
       headers.set("Content-Type", "application/json");
 
       if (access_token) {

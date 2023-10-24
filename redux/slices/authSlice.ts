@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
-import { RootState } from "../rootReducer";
+import { RootState } from "../reducers/rootReducer";
 
 type AuthState = {
   accessToken: string | null;

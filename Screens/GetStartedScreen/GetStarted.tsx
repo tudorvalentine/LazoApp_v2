@@ -2,7 +2,7 @@ import { Appbar, Button } from "react-native-paper";
 import { Text } from "react-native-paper";
 import SocialButton from "../../components/SocialButton";
 
-import {GoogleSvg, FacebookSvg, TwitterSvg} from '../../assets/svg';
+import { GoogleSvg, FacebookSvg, TwitterSvg } from "../../assets/svg";
 
 import { View } from "react-native";
 import { g_style } from "../../styles/styles";
@@ -63,7 +63,7 @@ const GetStarted = (props) => {
           </Text>
           <Button
             onPress={() => {
-              navigation.navigate("LoginScreen");
+              navigation.navigate("Login");
             }}
           >
             <Text

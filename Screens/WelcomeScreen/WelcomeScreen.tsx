@@ -6,7 +6,7 @@ export default function WelcomeScreen({ navigation }) {
   return (
     <>
       <Image
-        source={require("../assets/img/Screen_1.png")}
+        source={require("../../assets/img/Screen_1.png")}
         style={{ width: "100%", height: "100%" }}
       />
       <Surface

@@ -1,4 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { BASE_URL } from "./api.config";
 
 interface IAuthResponse {
   access_token: string;
@@ -11,7 +12,7 @@ interface ICredential {
 
 export const authApi = createApi({
   reducerPath: "authApi",
-  baseQuery: fetchBaseQuery({ baseUrl: "http://192.168.8.119:8000/lazoapi" }),
+  baseQuery: fetchBaseQuery({ baseUrl: BASE_URL }),
   endpoints: (builder) => ({
     login: builder.mutation<IAuthResponse, ICredential>({
       query: (credential) => ({
