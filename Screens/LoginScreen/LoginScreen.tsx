@@ -2,29 +2,44 @@ import { Appbar, Button, TextInput, Switch } from "react-native-paper";
 import { View, Text } from "react-native";
 import { useState } from "react";
 import { g_style } from "../../styles/styles";
-import axios from "axios";
 import BottomButton from "../../components/BottomButton";
-
+import { useLoginMutation } from "../../redux/api/auth/auth.api";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  selectCurrentAccessToken,
+  setTokens,
+} from "../../redux/slices/auth.slice";
 export default function LoginScreen({ navigation }) {
   const [isSwitchOn, setIsSwitchOn] = useState(false);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [login, { isLoading: loginLoading, isError: loginError }] =
+    useLoginMutation();
 
-  const clickLogin = () => {
-    axios
-      .post("http://192.168.8.119:80/api/login.php", {
-        username: username,
-        password: password,
-      })
-      .then(function (response) {
-        console.log(response.data);
-      })
-      .catch(function (error) {
-        console.log(error);
-      })
-      .finally(function () {});
+  const handleLogin = async () => {
+    const res = await login({
+      username: username,
+      password: password,
+    }).unwrap();
+    return res;
   };
+  const dispatch = useDispatch();
+  const handleClickLogin = () => {
+    const resp = handleLogin();
+    resp
+      .then((response) => {
+        console.log("username : ", username);
+        console.log("password : ", password);
 
+        const accessT = response.access_token;
+        const refreshT = response.refresh_token;
+        dispatch(setTokens({ accessToken: accessT, refreshToken: refreshT }));
+      })
+      .catch((e) => {
+        console.log("err > ", e);
+      });
+  };
+  console.log("tok", useSelector(selectCurrentAccessToken));
   const onToggleSwitch = () => setIsSwitchOn(!isSwitchOn);
   return (
     <>
@@ -68,7 +83,14 @@ export default function LoginScreen({ navigation }) {
           />
         </View>
         <View style={{ alignItems: "flex-end" }}>
-          <Button textColor="red">Forgot password?</Button>
+          <Button
+            onPress={() => {
+              navigation.navigate("ForgotPassword");
+            }}
+            textColor="red"
+          >
+            Forgot password?
+          </Button>
         </View>
         <View style={{ justifyContent: "space-between", flexDirection: "row" }}>
           <View style={{ justifyContent: "center" }}>
@@ -90,8 +112,14 @@ export default function LoginScreen({ navigation }) {
           By connecting your account confirm that you agree with our Term and
           Condition
         </Text>
-        <BottomButton buttonText="Login" />
+        <BottomButton onPress={handleClickLogin} buttonText="Login" />
       </View>
     </>
   );
+}
+function dispatch(arg0: {
+  payload: { accessToken: string; refreshToken: string };
+  type: "auth/setTokens";
+}) {
+  throw new Error("Function not implemented.");
 }

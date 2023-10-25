@@ -3,8 +3,6 @@ import React from "react";
 import Title from "../../components/Title";
 import Subtitle from "../../components/Subtitle";
 
-import { useEffect } from "react";
-
 import {
   AdidasSvg,
   FilaSvg,
@@ -18,12 +16,8 @@ import SectionHead from "../../components/SectionHead/SectionHead";
 import ProductCard from "../../components/ProductCard";
 import useScreenHeader from "../../hooks/useScreenHeader";
 import { useNavigation } from "@react-navigation/native";
-import { useGetBrandsQuery } from "../../redux/api/lazoApi";
-import { useLoginMutation } from "../../redux/api/authApi";
-import { isLoading } from "expo-font";
-import { useDispatch } from "react-redux";
-import { setTokens } from "../../redux/slices/authSlice";
-const Home = (props) => {
+
+const Home = () => {
   const navigation = useNavigation();
   useScreenHeader({
     hasLeftMenu: true,
@@ -32,39 +26,6 @@ const Home = (props) => {
       height: 130,
     },
   });
-  // const [login, { isLoading: loginLoading, isError: loginError }] =
-  //   useLoginMutation();
-
-  // const handleLogin = async () => {
-  //   const resp = await login({
-  //     username: "tudor",
-  //     password: "popesKu1903",
-  //   }).unwrap();
-  //   return resp;
-  // };
-  // const dispatch = useDispatch();
-  // const {
-  //   data: brands,
-  //   isLoading: brandsLoading,
-  //   isError: brandsError,
-  // } = useGetBrandsQuery();
-
-  // useEffect(() => {
-  //   const res = handleLogin();
-  //   res
-  //     .then((response) => {
-  //       const accessT = response.access_token;
-  //       const refreshT = response.refresh_token;
-  //       console.log("accessT", accessT);
-  //       console.log("refreshT", refreshT);
-  //       dispatch(setTokens({ accessToken: accessT, refreshToken: refreshT }));
-
-  //       console.log("brands", brands);
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // }, []);
 
   const data = [
     { id: "1", text: "Adidas", icon: <AdidasSvg /> },

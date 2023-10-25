@@ -9,13 +9,14 @@ import OrderButton from "../components/Header/OrderButton";
 import BackButton from "../components/Header/BackButton";
 import CartStackScreen from "./CartStackScreen";
 import AuthenticationStackScreen from "./AuthenticationStackScreen";
+import { useSelector } from "react-redux";
+import { selectCurrentAccessToken } from "../redux/slices/auth.slice";
 
 const RootNavigator = () => {
   const Tab = createBottomTabNavigator();
-  const isAuthenticated = false;
   return (
     <>
-      {isAuthenticated == true ? (
+      {useSelector(selectCurrentAccessToken) != null ? (
         <Tab.Navigator>
           <Tab.Screen
             name="Home"

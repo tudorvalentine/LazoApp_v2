@@ -7,9 +7,16 @@ import { GoogleSvg, FacebookSvg, TwitterSvg } from "../../assets/svg";
 import { View } from "react-native";
 import { g_style } from "../../styles/styles";
 import BottomButton from "../../components/BottomButton";
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
+import { selectCurrentAccessToken } from "../../redux/slices/auth.slice";
 
 const GetStarted = (props) => {
   const { navigation } = props;
+  const token = useSelector(selectCurrentAccessToken);
+  useEffect(() => {
+    console.log("token : ", token);
+  }, []);
   return (
     <>
       <Appbar.Header mode="large" style={{ backgroundColor: "white" }}>

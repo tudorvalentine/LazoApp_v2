@@ -1,5 +1,4 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { BASE_URL } from "./api.config";
+import { api } from "./api";
 
 interface IAuthResponse {
   access_token: string;
@@ -10,9 +9,7 @@ interface ICredential {
   password: string;
 }
 
-export const authApi = createApi({
-  reducerPath: "authApi",
-  baseQuery: fetchBaseQuery({ baseUrl: BASE_URL }),
+export const authApi = api.injectEndpoints({
   endpoints: (builder) => ({
     login: builder.mutation<IAuthResponse, ICredential>({
       query: (credential) => ({

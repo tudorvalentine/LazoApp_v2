@@ -1,10 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { RootState } from "../store";
-import { BASE_URL } from "./api.config";
-interface IBrand {
-  brand_id: number;
-  brand_name: string;
-}
+import { RootState } from "../../store";
+import { BASE_URL } from "../api.config";
 
 export const lazoApi = createApi({
   reducerPath: "lazoApi",
@@ -22,11 +18,5 @@ export const lazoApi = createApi({
       return headers;
     },
   }),
-  endpoints: (builder) => ({
-    getBrands: builder.query<IBrand[], void>({
-      query: () => "brand",
-    }),
-  }),
+  endpoints: () => ({}),
 });
-
-export const { useGetBrandsQuery } = lazoApi;

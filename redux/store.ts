@@ -1,19 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { authApi } from "./api/authApi";
+import { authApi } from "./api/auth/api";
 import rootReducer from "./reducers/rootReducer";
 import { setupListeners } from "@reduxjs/toolkit/query";
-import { lazoApi } from "./api/lazoApi";
+import { lazoApi } from "./api/lazo/api";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import {
-  persistReducer,
-  persistStore,
-  FLUSH,
-  REHYDRATE,
-  PAUSE,
-  PERSIST,
-  PURGE,
-  REGISTER,
-} from "redux-persist";
+import { persistReducer, persistStore } from "redux-persist";
 
 const persistConfig = {
   key: "root",
@@ -26,9 +17,7 @@ const store = configureStore({
   reducer: persistedReducer,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
-      serializableCheck: {
-        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-      },
+      serializableCheck: false,
     }).concat(authApi.middleware, lazoApi.middleware),
 });
 
