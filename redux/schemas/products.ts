@@ -9,3 +9,8 @@ export interface IProductState {
   loading: boolean;
   error: boolean;
 }
+
+export interface IProductSegment {
+  offset: number;
+  limmit: number;
+}

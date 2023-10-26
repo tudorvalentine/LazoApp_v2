@@ -2,7 +2,6 @@ import { View, Text, StyleSheet, FlatList } from "react-native";
 import React from "react";
 import Title from "../../components/Title";
 import Subtitle from "../../components/Subtitle";
-
 import {
   AdidasSvg,
   FilaSvg,
@@ -16,7 +15,13 @@ import SectionHead from "../../components/SectionHead/SectionHead";
 import ProductCard from "../../components/ProductCard";
 import useScreenHeader from "../../hooks/useScreenHeader";
 import { useNavigation } from "@react-navigation/native";
-
+import { useGetProductsQuery } from "../../redux/api/lazo/lazo.api";
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
+import {
+  selectCurrentAccessToken,
+  selectCurrentRefreshToken,
+} from "../../redux/slices/auth.slice";
 const Home = () => {
   const navigation = useNavigation();
   useScreenHeader({
@@ -27,6 +32,17 @@ const Home = () => {
     },
   });
 
+  const { data: products, isLoading } = useGetProductsQuery({
+    offset: 0,
+    limmit: 10,
+  });
+  const tokA = useSelector(selectCurrentAccessToken);
+  const tokR = useSelector(selectCurrentRefreshToken);
+  useEffect(() => {
+    console.log("Products", products);
+    console.log("Token a", tokA);
+    console.log("Token r", tokR);
+  }, []);
   const data = [
     { id: "1", text: "Adidas", icon: <AdidasSvg /> },
     { id: "2", text: "Nike", icon: <NikeSvg /> },

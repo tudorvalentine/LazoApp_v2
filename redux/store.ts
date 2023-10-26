@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { authApi } from "./api/auth/api";
+import { authApi } from "./api/auth/auth.api";
 import rootReducer from "./reducers/rootReducer";
 import { setupListeners } from "@reduxjs/toolkit/query";
 import { lazoApi } from "./api/lazo/api";
